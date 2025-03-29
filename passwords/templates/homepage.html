@@ -1,0 +1,256 @@
+{% extends 'base.html' %}
+
+{% block title %}CyberPass Sentinel - Cybersecurity Password Management{% endblock %}
+
+{% block content %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root {
+    --deep-black: #0a0a0a;
+    --dark-charcoal: #121212;
+    --neon-green: #00ff41;
+    --muted-green: #00aa2b;
+    --text-primary: #e0e0e0;
+    --text-secondary: #00ff41;
+}
+
+* {
+    box-sizing: border-box;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+body {
+    border-top: 3px solid var(--primary-color);
+    font-family: 'Inter', sans-serif;
+    background-color: var(--deep-black);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.passforge-container {
+    max-width: 1200px;
+    margin: 0;
+    padding: 2rem;
+}
+
+.passforge-main {
+    margin-top: 0%;
+    width: 100%;
+    max-width: 1200px;
+    padding: 1rem;
+    background-color: var(--dark-black);
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.1);
+}
+
+/* Glitch Text Animation */
+.glitch-container {
+    text-align: center;
+    position: absolute;
+    top: 30%;
+    left: 40%;
+    margin-bottom: 2rem;
+}
+
+.glitch-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--neon-green);
+    text-transform: uppercase;
+    position: relative;
+    text-shadow: 
+        0 0 10px var(--neon-green),
+        0 0 20px var(--dark-black),
+        0 0 40px var(--deep-black); 
+    animation: glitch-anim 2s infinite alternate-reverse;
+}
+
+.underline {
+    height: 4px;
+    width: 200px;
+    background: linear-gradient(to right, transparent, var(--neon-green), transparent);
+    margin: 10px auto;
+    animation: pulse 2s infinite alternate;
+}
+
+@keyframes glitch-anim {
+    0% { transform: translate(0, 0) skew(0deg); }
+    10% { transform: translate(-2px, -2px) skew(-5deg); }
+    20% { transform: translate(2px, 2px) skew(5deg); }
+    30% { transform: translate(-2px, 2px) skew(-3deg); }
+    40% { transform: translate(2px, -2px) skew(3deg); }
+    50% { transform: translate(0, 0) skew(0deg); }
+}
+
+@keyframes pulse {
+    0% { width: 100px; opacity: 0.5; }
+    100% { width: 200px; opacity: 1; }
+}
+
+
+.hero-section {
+    background: rgba(18, 18, 18, 0.8);
+    height: auto;
+    border: 2px solid var(--neon-green);
+    border-radius: 12px;
+    padding: 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.hero-section h2 {
+    color: var(--neon-green);
+    margin-bottom: 1rem;
+}
+.hero-section h6{
+    position: absolute;
+    top: 30%;
+    left: 17%;
+    text-align: center;
+    margin-top: 10rem;
+}
+
+.action-grid {
+    margin-left: 60px;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 8rem;
+}
+
+.passforge-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid var(--neon-green);
+    color: var(--neon-green);
+    background: transparent;
+    gap: 0.5rem;
+}
+
+.passforge-btn:hover {
+    background-color: rgba(0, 255, 65, 0.1);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+}
+
+.features-section {
+    background-color: var(--dark-black);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.feature-card {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--neon-green);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 255, 65, 0.2);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--neon-green);
+}
+.feature-card h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+.feature-card p {
+    color: var(--text-primary);
+}
+.feature-card:hover p {
+    color: var(--text-secondary);
+}
+.feature-card:hover h3 {
+    color: var(--text-secondary);
+}
+.cta-section {
+    background: rgba(18, 18, 18, 0.8);
+    border: 2px solid var(--neon-green);
+    border-radius: 12px;
+    padding: 3rem;
+    text-align: center;
+}
+.cta-section h2 {
+    color: var(--muted-green);
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .action-grid, .features-section {
+        grid-template-columns: 1fr;
+    }
+
+    .passforge-title {
+        font-size: 2.5rem;
+    }
+}
+
+</style>
+<div class="passforge-container">
+    <main class="passforge-main">
+        <section class="hero-section">
+            <div class="glitch-container">
+                <h1 class="glitch-text" data-text="PassForge">PassForge</h1>
+                <div class="underline"></div>
+            </div>      
+            <h2>Elevate Your Digital Security</h2> 
+            <h6>Comprehensive password intelligence at your fingertips</h6>
+            <div class="action-grid">
+                <a href="{% url 'check_password' %}" class="passforge-btn analysis-btn">
+                    <span class="btn-icon">🔍</span>
+                    Password Analysis
+                </a>
+                <a href="{% url 'generate_password' %}" class="passforge-btn generate-btn">
+                    <span class="btn-icon">🛡️</span>
+                    Generate Secure Password
+                </a>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Advanced Security</h3>
+                <p>Enterprise-grade encryption and protection mechanisms</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Rapid Analysis</h3>
+                <p>Instant password strength and vulnerability assessment</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <h3>Universal Compatibility</h3>
+                <p>Seamless integration across multiple platforms</p>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Secure Your Digital Identity</h2>
+            <p>Comprehensive password intelligence at your fingertips</p>
+            <a href="#security-audit" class="passforge-btn primary-btn">
+                Initiate Security Audit
+            </a>
+        </section>
+    </main>
+
+    
+</div>
+{% endblock %}
