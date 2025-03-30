@@ -1,6 +1,6 @@
-<<<<<<< HEAD
-# Pass-Forge
-PassForge is a Django-based password generator and strength checker. It creates secure, customizable passwords and evaluates their strength using advanced entropy analysis. With a sleek UI and robust backend, PassForge ensures strong password practices for enhanced cybersecurity..
+
+# PASSFORGE
+#### PassForge is a Django-based password generator and strength checker. It creates secure, customizable passwords and evaluates their strength using advanced entropy analysis. With a sleek UI and robust backend, PassForge ensures strong password practices for enhanced cybersecurity..
 =======
 # 🔐 Password-Generator-And-Strength-Checker
 ## (Django Python)
@@ -103,6 +103,3 @@ If you find this project useful, consider supporting it by:
 🔗 **Following the Repository**: Stay updated with the latest improvements and security updates.  
 
 Thank you for your support! 💙 Every contribution, star, and piece of feedback helps us build a stronger, more secure tool!  
-
-
->>>>>>> 6b9e5e0 (first commit)
